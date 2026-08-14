@@ -178,6 +178,20 @@ For the phone, copy the dev block from whichever product is closest and
 swap the pieces around.
 
 
+MOBILE
+------
+Checked on iPhone SE, iPhone 12, iPhone 15 Pro Max, Pixel 7 and iPad
+mini. No sideways scroll, every touch target at least 44px, nothing
+smaller than 11px type, and the cursor effect is off on touch devices.
+
+The one thing to be careful about if you add decoration later: the
+colour washes and hero chips sit deliberately past the right edge.
+body{overflow-x:hidden} hides the scrollbar but the document stays
+wider than the screen, and a phone responds by zooming the whole page
+out to fit, which knocks everything off position. html and the
+sections carry overflow-x:clip to contain that. Keep it.
+
+
 IF SOMETHING BREAKS
 -------------------
 The site degrades in three stages. With JavaScript off, a <noscript> block

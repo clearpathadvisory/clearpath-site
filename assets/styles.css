@@ -643,3 +643,35 @@ a{color:inherit}
   border-radius:inherit;
 }
 .dev__shot.is-on{opacity:1}
+
+/* ══════════ MOBILE CORRECTIONS ══════════ */
+
+/* The washes and hero chips are positioned past the right edge by design.
+   body{overflow-x:hidden} stops the sideways scroll but the document is
+   still wider than the screen, so a phone zooms the whole page out to fit
+   and everything lands off-position. overflow-x:clip contains them without
+   creating a scroll container, which would break the sticky services index. */
+html{overflow-x:clip}
+.section,.stats{overflow-x:clip}
+
+@media (max-width:900px){
+  /* touch targets: 44px minimum */
+  .burger{width:44px;height:44px}
+  .burger span{left:12px}
+  .burger span:nth-child(1){top:19px}
+  .burger span:nth-child(2){top:25px}
+
+  .nav__mark{min-height:44px;align-items:center}
+
+  .pan__link{min-height:44px;align-items:center;padding-bottom:0}
+  .start__alt a{display:inline-flex;align-items:center;min-height:44px}
+  .foot__nav a{padding:.7rem 0}
+  .picks label{min-height:44px}
+  .form input,.form select,.form textarea{min-height:48px}
+
+  /* nothing below 11px on a phone */
+  .pan__meta b{font-size:.6875rem}
+  .pan__tag,.svc__proof,.horiz__hint,.chips li,.foot__nav h4,
+  .hero__scroll,.foot__legal{font-size:.6875rem}
+  .cur,.cur-dot{display:none}
+}
