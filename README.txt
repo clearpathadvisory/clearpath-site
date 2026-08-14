@@ -38,7 +38,12 @@ Tested end to end against a stubbed endpoint. The POST carries:
   name, email, needs (one value per chip ticked), budget, message
 plus two hidden helpers:
   _subject   titles the notification email Formspree sends you
-  _gotcha    honeypot, silently drops bots
+  _gotcha    honeypot, kept empty by display:none
+
+If a submission ever lands in Formspree's Spam tab instead of the
+Inbox, open it, tick it and mark it Not spam. That trains the filter.
+A spam-flagged submission is stored but does not send you an email,
+which looks exactly like the form being broken when it is not.
 
 To test for real: open the site, send one submission with your own
 details, and check it lands in the Formspree dashboard. Formspree will

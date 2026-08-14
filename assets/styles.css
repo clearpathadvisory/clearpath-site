@@ -531,7 +531,11 @@ a{color:inherit}
 .form .btn::after{border-color:#fff}
 .hint{font-size:.75rem;color:rgba(255,255,255,.4);margin:.6rem 0 0;line-height:1.55}
 .hint a{color:rgba(255,255,255,.75)}
-.hp{position:absolute;left:-9999px;opacity:0;height:0;width:0}
+/* Honeypot. display:none is deliberate: an off-screen but still
+   rendered input can be autofilled by Chrome or a password manager,
+   and any value in _gotcha makes Formspree file the submission as
+   spam. display:none is not autofilled. */
+.hp{display:none !important}
 .form__msg{grid-column:1 / -1;margin:0;font-family:var(--mono);font-size:.8125rem}
 .form__msg.is-ok{color:#7FD8C4}
 .form__msg.is-bad{color:#FF8A73}
