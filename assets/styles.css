@@ -669,6 +669,13 @@ html{overflow-x:clip}
   .picks label{min-height:44px}
   .form input,.form select,.form textarea{min-height:48px}
 
+  /* stats: auto-fit needs 372px for two columns and only has ~351,
+     so it collapsed to a single tall column. Force 2 x 2. */
+  .stats ul{grid-template-columns:repeat(2,minmax(0,1fr));gap:1.75rem 1rem}
+  .stats b{font-size:clamp(2rem,10vw,2.8rem);letter-spacing:-.05em}
+  .stats span{font-size:.625rem;line-height:1.55}
+  .stats__g{width:46px;height:18px;margin-top:.2rem}
+
   /* nothing below 11px on a phone */
   .pan__meta b{font-size:.6875rem}
   .pan__tag,.svc__proof,.horiz__hint,.chips li,.foot__nav h4,

@@ -3,19 +3,39 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ClearPath Advisory — Product studio, Warsaw</title>
-<meta name="description" content="ClearPath Advisory is a product studio in Warsaw. We design and build websites, mobile apps and SaaS products, and we ship our own.">
-<link rel="canonical" href="https://clearpathadvisory.com/">
+<title>ClearPath Advisory — Product studio in Warsaw | Websites, apps and SaaS</title>
+<meta name="description" content="ClearPath Advisory is a product studio in Warsaw. We design and build websites, mobile apps and SaaS products, and we ship our own: CasePilot, Relay, Nightink, BRICK and Duskloom.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="ClearPath Advisory">
 <meta name="theme-color" content="#0B0D0F">
 
+<!-- ─────────────────────────────────────────────────────────────
+     DOMAIN: these five absolute URLs are the only ones on the page.
+     When the real domain is live, replace clearpath-site-ochre.vercel.app
+     here, in robots.txt, in sitemap.xml and in the JSON-LD below.
+     ───────────────────────────────────────────────────────────── -->
+<link rel="canonical" href="https://clearpath-site-ochre.vercel.app/">
+<meta property="og:url" content="https://clearpath-site-ochre.vercel.app/">
+<meta property="og:image" content="https://clearpath-site-ochre.vercel.app/assets/og.png">
+
 <meta property="og:type" content="website">
-<meta property="og:title" content="ClearPath Advisory — Product studio, Warsaw">
-<meta property="og:description" content="Five products designed, built and shipped. Four of them live. The same hands build yours.">
-<meta property="og:url" content="https://clearpathadvisory.com/">
-<meta property="og:image" content="https://clearpathadvisory.com/assets/og.png">
+<meta property="og:site_name" content="ClearPath Advisory">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="ClearPath Advisory — Product studio in Warsaw">
+<meta property="og:description" content="We design and build websites, mobile apps and SaaS products. Five of our own are live. The same hands build yours.">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="ClearPath Advisory. Our portfolio isn't a client list. It's a shelf.">
+
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ClearPath Advisory — Product studio in Warsaw">
+<meta name="twitter:description" content="We design and build websites, mobile apps and SaaS products. Five of our own are live.">
+<meta name="twitter:image" content="https://clearpath-site-ochre.vercel.app/assets/og.png">
+<meta name="twitter:image:alt" content="ClearPath Advisory. Our portfolio isn't a client list. It's a shelf.">
 
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="assets/site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@400;500&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Schibsted+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
@@ -23,7 +43,55 @@
 <noscript><style>body.is-loading{overflow:auto}.pre{display:none}.i{transform:none}[data-fade]{opacity:1;transform:none}.horiz__track{flex-direction:column;width:100%}.pan{width:100%;height:auto;border-right:0}</style></noscript>
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"ProfessionalService","name":"ClearPath Advisory","description":"Product studio designing and building websites, mobile apps and SaaS products.","url":"https://clearpathadvisory.com/","email":"hello@clearpathadvisory.com","address":{"@type":"PostalAddress","addressLocality":"Warsaw","addressCountry":"PL"},"areaServed":"Worldwide","vatID":"PL9512604332"}
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://clearpath-site-ochre.vercel.app/#studio",
+      "name": "ClearPath Advisory",
+      "description": "Product studio in Warsaw designing and building websites, mobile apps and SaaS products.",
+      "url": "https://clearpath-site-ochre.vercel.app/",
+      "image": "https://clearpath-site-ochre.vercel.app/assets/og.png",
+      "logo": "https://clearpath-site-ochre.vercel.app/assets/icon-512.png",
+      "email": "hello@clearpathadvisory.com",
+      "address": { "@type": "PostalAddress", "addressLocality": "Warsaw", "addressCountry": "PL" },
+      "areaServed": "Worldwide",
+      "vatID": "PL9512604332",
+      "knowsAbout": ["Web design","Web development","iOS app development","Android app development","SaaS","Brand identity"],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Services",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Websites and landing pages" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mobile apps for iOS and Android" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SaaS products" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Brand and design systems" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Content and automation pipelines" } }
+        ]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://clearpath-site-ochre.vercel.app/#website",
+      "url": "https://clearpath-site-ochre.vercel.app/",
+      "name": "ClearPath Advisory",
+      "publisher": { "@id": "https://clearpath-site-ochre.vercel.app/#studio" },
+      "inLanguage": "en-GB"
+    },
+    {
+      "@type": "ItemList",
+      "name": "Products built by ClearPath Advisory",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "item": { "@type": "SoftwareApplication", "name": "CasePilot", "applicationCategory": "EducationalApplication", "operatingSystem": "iOS, Android, Web", "url": "https://casepilot.app" } },
+        { "@type": "ListItem", "position": 2, "item": { "@type": "SoftwareApplication", "name": "Relay", "applicationCategory": "BusinessApplication", "operatingSystem": "Web", "url": "https://relayme.bio" } },
+        { "@type": "ListItem", "position": 3, "item": { "@type": "SoftwareApplication", "name": "Nightink", "applicationCategory": "LifestyleApplication", "operatingSystem": "iOS, Android", "url": "https://nightink.app" } },
+        { "@type": "ListItem", "position": 4, "item": { "@type": "SoftwareApplication", "name": "BRICK", "applicationCategory": "GameApplication", "operatingSystem": "iOS, Android", "url": "https://apps.apple.com/app/id6794833513" } },
+        { "@type": "ListItem", "position": 5, "item": { "@type": "SoftwareApplication", "name": "Duskloom", "applicationCategory": "HealthApplication", "operatingSystem": "iOS, Android", "url": "https://duskloom.app" } }
+      ]
+    }
+  ]
+}
 </script>
 </head>
 <body class="is-loading">
@@ -149,7 +217,7 @@
         <div class="dev">
           <div class="dev__screen">
             <!-- Drop assets/shots/casepilot.png in and it replaces the mockup below. -->
-            <img class="dev__shot" src="assets/shots/casepilot.png" alt="" onload="this.classList.add('is-on')" onerror="this.remove()">
+            <img class="dev__shot" src="assets/shots/casepilot.png" alt="A CasePilot investigation screen showing a terrorist-financing case with alert details and evidence" width="620" height="1300" onload="this.classList.add('is-on')" onerror="this.remove()">
             <div class="ui-bar"><span class="ui-back"></span><span class="ui-t"></span><span class="ui-dot"></span></div>
             <div class="ui-prog"><i></i></div>
             <div class="ui-case"><span class="ui-pill ui-pill--acc"></span><span class="ui-ln w90"></span><span class="ui-ln w60"></span></div>
@@ -181,7 +249,7 @@
         <div class="dev">
           <div class="dev__screen dev__screen--center">
             <!-- Drop assets/shots/relay.png in and it replaces the mockup below. -->
-            <img class="dev__shot" src="assets/shots/relay.png" alt="" onload="this.classList.add('is-on')" onerror="this.remove()">
+            <img class="dev__shot" src="assets/shots/relay.png" alt="A live Relay link-in-bio page listing five apps" width="620" height="1300" onload="this.classList.add('is-on')" onerror="this.remove()">
             <span class="ui-av"></span>
             <span class="ui-ln w50 ui-mid"></span>
             <span class="ui-ln w70 ui-mid ui-dim"></span>
@@ -216,7 +284,7 @@
         <div class="dev">
           <div class="dev__screen dev__screen--paper">
             <!-- Drop assets/shots/nightink.png in and it replaces the mockup below. -->
-            <img class="dev__shot" src="assets/shots/nightink.png" alt="" onload="this.classList.add('is-on')" onerror="this.remove()">
+            <img class="dev__shot" src="assets/shots/nightink.png" alt="The Nightink entries list showing three diary entries" width="620" height="1300" onload="this.classList.add('is-on')" onerror="this.remove()">
             <span class="ui-date"></span>
             <span class="ui-ln w85"></span><span class="ui-ln w95"></span><span class="ui-ln w70"></span>
             <span class="ui-ln w90"></span><span class="ui-ln w45"></span>
@@ -248,7 +316,7 @@
         <div class="dev">
           <div class="dev__screen">
             <!-- Drop assets/shots/brick.png in and it replaces the mockup below. -->
-            <img class="dev__shot" src="assets/shots/brick.png" alt="" onload="this.classList.add('is-on')" onerror="this.remove()">
+            <img class="dev__shot" src="assets/shots/brick.png" alt="A BRICK puzzle level in progress with coloured tiles" width="620" height="1300" onload="this.classList.add('is-on')" onerror="this.remove()">
             <div class="ui-score"><span class="ui-ln w30"></span><span class="ui-ln w20 ui-dim"></span></div>
             <div class="ui-grid">
               <i></i><i class="on"></i><i></i><i class="on2"></i>
@@ -283,7 +351,7 @@
         <div class="dev">
           <div class="dev__screen dev__screen--center">
             <!-- Drop assets/shots/duskloom.png in and it replaces the mockup below. -->
-            <img class="dev__shot" src="assets/shots/duskloom.png" alt="" onload="this.classList.add('is-on')" onerror="this.remove()">
+            <img class="dev__shot" src="assets/shots/duskloom.png" alt="The Duskloom sound picker with seven noise orbs" width="620" height="1300" onload="this.classList.add('is-on')" onerror="this.remove()">
             <span class="ui-arc"></span>
             <span class="ui-ln w40 ui-mid"></span>
             <span class="ui-ln w65 ui-mid ui-dim"></span>

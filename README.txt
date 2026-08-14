@@ -50,6 +50,28 @@ details, and check it lands in the Formspree dashboard. Formspree will
 email you to confirm the very first one.
 
 
+SEO AND SHARE CARDS
+-------------------
+Sharing the link now shows a proper card: assets/og.png, 1200x630,
+built from the site's own headline in its real fonts. Also added:
+Open Graph and Twitter tags with dimensions and alt text, a manifest,
+an apple-touch-icon, real alt text on all five product screenshots,
+and JSON-LD describing the studio, the site and each of the five
+products as SoftwareApplication entries.
+
+The absolute URLs currently point at clearpath-site-ochre.vercel.app,
+which is where the site actually lives today. Pointing them at a
+domain that does not resolve yet would stop the page being indexed.
+
+When the real domain goes live, replace that host in exactly four
+files: index.html (a marked DOMAIN block near the top, plus the
+JSON-LD), privacy.html, robots.txt and sitemap.xml. Then submit
+sitemap.xml in Google Search Console.
+
+To regenerate the share card after a copy change, the script is not
+bundled -- just ask, or edit assets/og.png in any image editor.
+
+
 STEP 2 — THE LAST FIND AND REPLACE
 ----------------------------------
 hello@clearpathadvisory.com is still a placeholder I invented. It
