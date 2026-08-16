@@ -59,14 +59,12 @@ an apple-touch-icon, real alt text on all five product screenshots,
 and JSON-LD describing the studio, the site and each of the five
 products as SoftwareApplication entries.
 
-The absolute URLs currently point at clearpath-site-ochre.vercel.app,
-which is where the site actually lives today. Pointing them at a
-domain that does not resolve yet would stop the page being indexed.
+Every absolute URL points at https://www.clearpathadvisory.pl -- the
+www form, because Vercel redirects the apex to it. Done, nothing to
+change.
 
-When the real domain goes live, replace that host in exactly four
-files: index.html (a marked DOMAIN block near the top, plus the
-JSON-LD), privacy.html, robots.txt and sitemap.xml. Then submit
-sitemap.xml in Google Search Console.
+Next: submit sitemap.xml in Google Search Console, and set the
+preferred domain there.
 
 To regenerate the share card after a copy change, the script is not
 bundled -- just ask, or edit assets/og.png in any image editor.
