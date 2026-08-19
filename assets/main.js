@@ -171,14 +171,20 @@
     $$('.magnet').forEach(function (el) {
       var isBtn = el.classList.contains('btn');
       var strength = isBtn ? 0.3 : 0.22;
-      var breath = null;
+      var hovering = false;
+
+      // Hover lifts once and holds. The old version looped a 1.04-1.11
+      // breathe forever, which on an element hovered dozens of times a day
+      // reads as restless rather than alive, and the jump straight to 1.04
+      // on enter was a visible pop.
+      function lift(to, dur) {
+        if (!isBtn) return;
+        gsap.to(el, { scale: to, duration: dur, ease: 'power3.out', overwrite: 'auto' });
+      }
 
       el.addEventListener('mouseenter', function () {
-        if (!isBtn) return;
-        gsap.killTweensOf(el, 'scale');
-        breath = gsap.fromTo(el,
-          { scale: 1.04 },
-          { scale: 1.11, duration: 1.4, ease: 'sine.inOut', yoyo: true, repeat: -1 });
+        hovering = true;
+        lift(1.04, .2);
       });
 
       el.addEventListener('mousemove', function (e) {
@@ -191,10 +197,18 @@
       });
 
       el.addEventListener('mouseleave', function () {
-        if (breath) { breath.kill(); breath = null; }
-        gsap.to(el, { x: 0, y: 0, duration: .7, ease: 'elastic.out(1, .4)' });
-        if (isBtn) gsap.to(el, { scale: 1, duration: .45, ease: 'power3.out' });
+        hovering = false;
+        // Exit is quicker than entry. The elastic stays, because the recoil
+        // is the point of a magnetic button, just tightened.
+        gsap.to(el, { x: 0, y: 0, duration: .5, ease: 'elastic.out(1, .5)' });
+        lift(1, .2);
       });
+
+      // Press feedback. Nothing in this file answered a click before, so
+      // buttons felt inert at the exact moment the user was watching.
+      el.addEventListener('pointerdown', function () { lift(0.97, .1); });
+      el.addEventListener('pointerup', function () { lift(hovering ? 1.04 : 1, .14); });
+      el.addEventListener('pointercancel', function () { lift(1, .14); });
     });
   }
 
@@ -249,7 +263,8 @@
   chips.forEach(function (chip, n) {
     gsap.to(chip, {
       y: '+=' + (18 + n * 6), x: '+=' + (n % 2 ? 12 : -12),
-      duration: 4 + n * 0.7, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: n * .3
+      duration: 4 + n * 0.7, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: n * .3,
+      scrollTrigger: { trigger: '.hero', start: 'top bottom', end: 'bottom top', toggleActions: 'play pause resume pause' }
     });
     gsap.to(chip, {
       yPercent: -60 - n * 25, ease: 'none',
@@ -297,9 +312,13 @@
     var dir = i % 2 === 0 ? -1 : 1;
     var half = track.scrollWidth / 2;
     var pos = dir < 0 ? 0 : -half;
-    var speed = 0.6, boost = 0;
+    var speed = 0.6, boost = 0, onScreen = false;
 
+    // Only advance while the marquee is actually in view. It used to write a
+    // transform every frame for the whole page life, including the long
+    // stretches where it was nowhere near the viewport.
     gsap.ticker.add(function () {
+      if (!onScreen) return;
       pos += (speed + boost) * dir;
       if (dir < 0 && pos <= -half) pos += half;
       if (dir > 0 && pos >= 0) pos -= half;
@@ -309,6 +328,7 @@
 
     ScrollTrigger.create({
       trigger: mq, start: 'top bottom', end: 'bottom top',
+      onToggle: function (self) { onScreen = self.isActive; },
       onUpdate: function (self) {
         boost = Math.min(Math.abs(self.getVelocity() / 260), 14);
         gsap.to(mq, { skewX: gsap.utils.clamp(-7, 7, self.getVelocity() / -420), duration: .5, ease: 'power2.out', overwrite: true });
@@ -334,6 +354,13 @@
   var horiz = $('.horiz'), track = $('#hTrack'), hBar = $('#hBar'), hCount = $('#hCount'), nav = $('#nav');
   var mm = gsap.matchMedia();
 
+  // The device mockups each run several infinite CSS keyframes. Only the panel
+  // on screen needs them; styles.css pauses the rest off the back of this class.
+  function setLivePanel(panel) {
+    products.forEach(function (p) { p.classList.toggle('is-live', p === panel); });
+  }
+  if (products.length) setLivePanel(products[0]);
+
   mm.add('(min-width: 901px)', function () {
     var dist = function () { return track.scrollWidth - window.innerWidth; };
 
@@ -357,6 +384,7 @@
       hCount.textContent = String(idx + 1).padStart(2, '0') + ' / ' + String(products.length).padStart(2, '0');
       if (horiz.dataset.active === String(idx)) return;
       horiz.dataset.active = idx;
+      setLivePanel(products[idx]);
       gsap.to(horiz, { backgroundColor: products[idx].dataset.hue, duration: .7, ease: 'power2.out' });
       document.documentElement.style.setProperty('--live', products[idx].dataset.accent);
     }
@@ -416,6 +444,7 @@
         });
         if (horiz.dataset.active !== best.dataset.name) {
           horiz.dataset.active = best.dataset.name;
+          setLivePanel(best);
           gsap.to(horiz, { backgroundColor: best.dataset.hue, duration: .6 });
           document.documentElement.style.setProperty('--live', best.dataset.accent);
         }
@@ -489,8 +518,11 @@
     });
     // mirrored doodles point back toward their heading
     if (svg.hasAttribute('data-flip')) gsap.set(svg, { scaleX: -1 });
-    // a slow drift so they never look pasted on
-    gsap.to(svg, { rotate: 2.5, y: -8, duration: 6, yoyo: true, repeat: -1, ease: 'sine.inOut' });
+    // a slow drift so they never look pasted on, paused once it scrolls away
+    gsap.to(svg, {
+      rotate: 2.5, y: -8, duration: 6, yoyo: true, repeat: -1, ease: 'sine.inOut',
+      scrollTrigger: { trigger: svg, start: 'top bottom', end: 'bottom top', toggleActions: 'play pause resume pause' }
+    });
   });
 
   /* ── colour washes drift with scroll ─────────────────────── */
@@ -521,8 +553,9 @@
 
   var orbit = $('.studio__orbit');
   if (orbit) {
-    gsap.to($$('span', orbit), { rotate: 360, duration: 26, repeat: -1, ease: 'none', stagger: -4, transformOrigin: '50% 50%' });
-    gsap.to($('i', orbit), { scale: 1.25, duration: 2.2, yoyo: true, repeat: -1, ease: 'sine.inOut' });
+    var orbitGate = { trigger: orbit, start: 'top bottom', end: 'bottom top', toggleActions: 'play pause resume pause' };
+    gsap.to($$('span', orbit), { rotate: 360, duration: 26, repeat: -1, ease: 'none', stagger: -4, transformOrigin: '50% 50%', scrollTrigger: orbitGate });
+    gsap.to($('i', orbit), { scale: 1.25, duration: 2.2, yoyo: true, repeat: -1, ease: 'sine.inOut', scrollTrigger: orbitGate });
   }
 
   /* ── footer headline ─────────────────────────────────────── */

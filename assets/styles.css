@@ -107,11 +107,11 @@ a{color:inherit}
   font-family:var(--mono);font-size:.8125rem;
   padding:1rem 1.6rem;border:1px solid var(--ink);border-radius:999px;
   text-decoration:none;cursor:pointer;
-  transition:background .45s var(--ease),color .45s var(--ease),border-color .45s var(--ease);
+  transition:background .2s var(--ease),color .2s var(--ease),border-color .2s var(--ease);
 }
-.btn i{font-style:normal;transition:transform .4s var(--ease)}
-.btn:hover{background:transparent;color:var(--ink);border-color:var(--live)}
-.btn:hover i{transform:translateX(4px)}
+.btn i{font-style:normal;transition:transform .2s var(--ease)}
+@media (hover:hover) and (pointer:fine){.btn:hover{background:transparent;color:var(--ink);border-color:var(--live)}
+.btn:hover i{transform:translateX(4px)}}
 
 /* a soft ring that expands out of the edge while hovered */
 .btn::after{
@@ -119,7 +119,7 @@ a{color:inherit}
   border:1px solid var(--live);
   opacity:0;transform:scale(1);pointer-events:none;
 }
-.btn:hover::after{animation:ripple 2.4s var(--ease) infinite}
+@media (hover:hover) and (pointer:fine){.btn:hover::after{animation:ripple 1.4s var(--ease)}}
 @keyframes ripple{
   0%{opacity:.5;transform:scale(1)}
   70%{opacity:0;transform:scale(1.28)}
@@ -127,7 +127,7 @@ a{color:inherit}
 }
 
 .btn--ghost{background:transparent;color:var(--ink);border-color:var(--line)}
-.btn--ghost:hover{background:transparent;color:var(--ink);border-color:var(--live)}
+@media (hover:hover) and (pointer:fine){.btn--ghost:hover{background:transparent;color:var(--ink);border-color:var(--live)}}
 .btn--sm{padding:.6rem 1.15rem;font-size:.75rem}
 .btn--wide{width:100%;padding:1.15rem 1.6rem}
 
@@ -143,22 +143,22 @@ a{color:inherit}
 .nav.is-inv .nav__glyph{background:var(--paper)}
 .nav.is-inv .nav__glyph::after{background:var(--ink)}
 .nav.is-inv .nav__links a{color:rgba(255,255,255,.72)}
-.nav.is-inv .nav__links a:hover{color:#fff}
+@media (hover:hover) and (pointer:fine){.nav.is-inv .nav__links a:hover{color:#fff}}
 .nav.is-inv .btn{background:var(--paper);color:var(--ink);border-color:var(--paper)}
-.nav.is-inv .btn:hover{background:transparent;color:var(--paper);border-color:var(--paper)}
+@media (hover:hover) and (pointer:fine){.nav.is-inv .btn:hover{background:transparent;color:var(--paper);border-color:var(--paper)}}
 .nav.is-inv .btn::after{border-color:var(--paper)}
 .nav.is-inv .burger span{background:var(--paper)}
 
 .nav__mark{display:flex;align-items:center;gap:.6rem;text-decoration:none;font-family:var(--mono);font-size:.8125rem;margin-right:auto}
 .nav__glyph{width:14px;height:14px;flex:none;border-radius:3px;background:var(--ink);position:relative;transition:background .4s ease,transform .6s var(--ease)}
 .nav__glyph::after{content:"";position:absolute;inset:4px 4px auto auto;width:6px;height:6px;border-radius:2px;background:var(--paper)}
-.nav__mark:hover .nav__glyph{transform:rotate(90deg)}
+@media (hover:hover) and (pointer:fine){.nav__mark:hover .nav__glyph{transform:rotate(90deg)}}
 .nav__name i{font-style:normal;opacity:.45}
 
 .nav__links{display:flex;gap:1.7rem}
 .nav__links a{position:relative;font-family:var(--mono);font-size:.75rem;text-decoration:none;color:var(--ink-2);padding-bottom:3px;transition:color .25s ease}
 .nav__links a::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .45s var(--ease)}
-.nav__links a:hover::after{transform:scaleX(1);transform-origin:left}
+@media (hover:hover) and (pointer:fine){.nav__links a:hover::after{transform:scaleX(1);transform-origin:left}}
 
 .burger{display:none;width:34px;height:34px;background:none;border:0;padding:0;cursor:pointer;position:relative}
 .burger span{position:absolute;left:7px;width:20px;height:1.5px;background:var(--ink);transition:transform .4s var(--ease)}
@@ -167,15 +167,15 @@ a{color:inherit}
 .burger.is-on span:nth-child(1){transform:translateY(3px) rotate(45deg)}
 .burger.is-on span:nth-child(2){transform:translateY(-3px) rotate(-45deg)}
 
-.drawer{position:fixed;inset:0;z-index:110;background:var(--ink);color:var(--paper);display:flex;flex-direction:column;justify-content:center;gap:.4rem;padding:var(--pad);clip-path:inset(0 0 100% 0);transition:clip-path .7s var(--ease);pointer-events:none}
+.drawer{position:fixed;inset:0;z-index:110;background:var(--ink);color:var(--paper);display:flex;flex-direction:column;justify-content:center;gap:.4rem;padding:var(--pad);clip-path:inset(0 0 100% 0);transition:clip-path .45s var(--ease);pointer-events:none}
 .drawer.is-open{clip-path:inset(0 0 0 0);pointer-events:auto}
 .drawer a{font-family:var(--display);font-weight:700;font-size:clamp(2rem,10vw,3.5rem);letter-spacing:-.04em;text-decoration:none;line-height:1.15;opacity:0;transform:translateY(20px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
 .drawer.is-open a{opacity:1;transform:none}
-.drawer.is-open a:nth-child(1){transition-delay:.18s}
-.drawer.is-open a:nth-child(2){transition-delay:.24s}
-.drawer.is-open a:nth-child(3){transition-delay:.30s}
-.drawer.is-open a:nth-child(4){transition-delay:.36s}
-.drawer.is-open a:nth-child(5){transition-delay:.42s}
+.drawer.is-open a:nth-child(1){transition-delay:.08s}
+.drawer.is-open a:nth-child(2){transition-delay:.13s}
+.drawer.is-open a:nth-child(3){transition-delay:.18s}
+.drawer.is-open a:nth-child(4){transition-delay:.23s}
+.drawer.is-open a:nth-child(5){transition-delay:.28s}
 
 @media (max-width:900px){
   .nav__links,.nav .btn--sm{display:none}
@@ -244,8 +244,8 @@ a{color:inherit}
 .stats li{display:flex;flex-direction:column;gap:.5rem;padding-top:1.1rem;border-top:1px solid var(--line)}
 .stats b{font-family:var(--display);font-weight:800;font-size:clamp(2.6rem,1.4rem + 4vw,5rem);letter-spacing:-.055em;line-height:.85;font-variant-numeric:tabular-nums}
 .stats span{font-family:var(--mono);font-size:.6875rem;letter-spacing:.06em;color:var(--muted);text-transform:uppercase;line-height:1.7}
-.stats__g{width:60px;height:24px;margin-top:.4rem;color:var(--line);fill:currentColor;overflow:visible}
-.stats li:hover .stats__g{color:var(--live);transition:color .4s ease}
+.stats__g{width:60px;height:24px;margin-top:.4rem;color:var(--line);fill:currentColor;overflow:visible;transition:color .25s ease}
+@media (hover:hover) and (pointer:fine){.stats li:hover .stats__g{color:var(--live)}}
 
 /* ══════════ HORIZONTAL GALLERY ══════════ */
 
@@ -281,7 +281,7 @@ a{color:inherit}
 .pan__meta b{font-weight:400;font-size:.5625rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4)}
 .pan__link{align-items:center;gap:.5rem;font-family:var(--mono);font-size:.8125rem;text-decoration:none;color:var(--pacc,#fff);border-bottom:1px solid currentColor;padding-bottom:2px}
 .pan__link i{font-style:normal;transition:transform .35s var(--ease)}
-.pan__link:hover i{transform:translate(3px,-3px)}
+@media (hover:hover) and (pointer:fine){.pan__link:hover i{transform:translate(3px,-3px)}}
 
 /* ══════════ DEVICE MOCKUPS ══════════
    Each product's interface, drawn from its own palette.        */
@@ -400,10 +400,10 @@ a{color:inherit}
 .svc__list{list-style:none;margin:0;padding:0}
 .svc__row{display:grid;grid-template-columns:auto minmax(0,1fr);gap:1.4rem;padding:clamp(1.8rem,3.5vw,2.8rem) 0;border-top:1px solid var(--line);transition:padding-left .5s var(--ease)}
 .svc__row:last-child{border-bottom:1px solid var(--line)}
-.svc__row:hover{padding-left:1rem}
+@media (hover:hover) and (pointer:fine){.svc__row:hover{padding-left:1rem}}
 .svc__ico{display:block;width:34px;height:34px;flex:none;margin-top:.35rem;color:var(--muted);transition:color .4s ease,transform .6s var(--ease)}
 .svc__ico svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round}
-.svc__row:hover .svc__ico{color:var(--live);transform:rotate(-8deg) scale(1.08)}
+@media (hover:hover) and (pointer:fine){.svc__row:hover .svc__ico{color:var(--live);transform:rotate(-8deg) scale(1.08)}}
 .svc__row h3{font-family:var(--display);font-weight:700;font-size:clamp(1.3rem,1rem + 1.4vw,2.15rem);letter-spacing:-.035em;line-height:1.05;margin:0 0 .9rem}
 .svc__row p{margin:0 0 1.1rem;color:var(--ink-2);max-width:52ch}
 .svc__proof{display:inline-flex;flex-wrap:wrap;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.625rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
@@ -424,7 +424,7 @@ a{color:inherit}
 .step{position:relative;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:1rem 2.5rem;align-items:start;padding:clamp(1.8rem,3.5vw,2.8rem) 0 clamp(1.8rem,3.5vw,2.8rem) clamp(1.5rem,4vw,3.5rem);border-top:1px solid var(--line)}
 .step:last-child{border-bottom:1px solid var(--line)}
 .step__node{position:absolute;left:-4.5px;top:calc(clamp(1.8rem,3.5vw,2.8rem) + .7rem);width:10px;height:10px;border-radius:50%;background:var(--paper);border:1px solid var(--ink);transition:background .4s ease,transform .5s var(--ease)}
-.step:hover .step__node{background:var(--ink);transform:scale(1.4)}
+@media (hover:hover) and (pointer:fine){.step:hover .step__node{background:var(--ink);transform:scale(1.4)}}
 .step__n{font-family:var(--mono);font-size:.75rem;color:var(--muted);padding-top:.55rem}
 .step__body h3{font-family:var(--display);font-weight:700;font-size:clamp(1.4rem,1.1rem + 1.2vw,2.1rem);letter-spacing:-.035em;margin:0 0 .6rem}
 .step__body p{margin:0;color:var(--ink-2);max-width:60ch}
@@ -522,12 +522,12 @@ a{color:inherit}
 .picks{display:flex;flex-wrap:wrap;gap:.5rem}
 .picks label{display:inline-flex;align-items:center;border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:.55rem .95rem;cursor:pointer;color:rgba(255,255,255,.72);font-size:.75rem;letter-spacing:.03em;text-transform:none;transition:border-color .25s ease,background .25s ease,color .25s ease}
 .picks input{position:absolute;opacity:0;width:0;height:0}
-.picks label:hover{border-color:rgba(255,255,255,.55);color:#fff}
+@media (hover:hover) and (pointer:fine){.picks label:hover{border-color:rgba(255,255,255,.55);color:#fff}}
 .picks label:has(input:checked){background:#fff;border-color:#fff;color:var(--ink)}
 .picks label:has(input:focus-visible){outline:2px solid #fff;outline-offset:2px}
 
 .form .btn{background:#fff;color:var(--ink);border-color:#fff}
-.form .btn:hover{background:transparent;color:#fff;border-color:#fff}
+@media (hover:hover) and (pointer:fine){.form .btn:hover{background:transparent;color:#fff;border-color:#fff}}
 .form .btn::after{border-color:#fff}
 .hint{font-size:.75rem;color:rgba(255,255,255,.4);margin:.6rem 0 0;line-height:1.55}
 .hint a{color:rgba(255,255,255,.75)}
@@ -553,7 +553,7 @@ a{color:inherit}
 .foot__nav{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:2rem}
 .foot__nav h4{font-family:var(--mono);font-size:.625rem;font-weight:400;letter-spacing:.16em;text-transform:uppercase;color:#6B757F;margin:0 0 .9rem}
 .foot__nav a{display:block;text-decoration:none;font-size:.9375rem;padding:.32rem 0;color:#D3D9DE;transition:color .25s ease,transform .35s var(--ease)}
-.foot__nav a:hover{color:#fff;transform:translateX(4px)}
+@media (hover:hover) and (pointer:fine){.foot__nav a:hover{color:#fff;transform:translateX(4px)}}
 .foot__legal{max-width:var(--maxw);margin:clamp(2.5rem,5vw,4rem) auto 0;padding-top:1.5rem;border-top:1px solid #1D2228;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-family:var(--mono);font-size:.6875rem;color:#6B757F}
 @media (max-width:760px){.foot__row{grid-template-columns:1fr}}
 
@@ -566,14 +566,43 @@ a{color:inherit}
 .doc ul{padding-left:1.1rem}
 .doc__meta{font-family:var(--mono);font-size:.6875rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 2.5rem}
 .doc__back{font-family:var(--mono);font-size:.75rem;display:inline-block;margin-bottom:2.5rem;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line)}
-.doc__back:hover{color:var(--ink)}
+@media (hover:hover) and (pointer:fine){.doc__back:hover{color:var(--ink)}}
+
+/* ══════════ PRESS FEEDBACK ══════════
+   Every interactive element needs to answer a press. On a real pointer
+   the .magnet elements are driven by GSAP (see main.js), so CSS must not
+   touch their transform. On touch GSAP never runs, so CSS owns it there. */
+
+.nav__links a:active,.drawer a:active,.foot__nav a:active,.doc__back:active{opacity:.6}
+.picks label:active{transform:scale(.97)}
+.svc__row:active .svc__ico{transform:scale(.94)}
+
+@media (hover:none),(pointer:coarse){
+  .magnet:active{transform:scale(.97)}
+  .magnet{transition:transform .1s var(--ease)}
+}
+
+/* ══════════ OFFSCREEN PAUSE ══════════
+   The device mockups loop forever. Only the panel currently on screen
+   needs to be animating; the rest are pure battery drain. main.js adds
+   .is-live to the active panel. */
+
+.pan:not(.is-live) .pan__tag i,
+.pan:not(.is-live) .ui-prog i,
+.pan:not(.is-live) .ui-link--acc,
+.pan:not(.is-live) .ui-sticker,
+.pan:not(.is-live) .ui-grid i.on,
+.pan:not(.is-live) .ui-wave i{animation-play-state:paused}
 
 /* ══════════ UTILITY ══════════ */
 
 [data-fade]{opacity:0;transform:translateY(24px)}
 
 @media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important}
+  /* Reduced motion means less movement, not no feedback. Position and
+     scale changes go; opacity and colour stay so hover, focus and form
+     states are still readable. */
+  *,*::before,*::after{animation:none !important;transition-property:opacity,color,background-color,border-color,fill !important;transition-duration:.15s !important}
   .i{transform:none}
   [data-fade]{opacity:1;transform:none}
   .start__big .ch{transform:none;opacity:1}
